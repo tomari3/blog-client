@@ -126,18 +126,25 @@ table {
   border-spacing: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 :root {
   --bg: #f2efe5;
   --dark-text: #141712;
   --light-text: #d5d6aa;
   --accent-blue: #769fb6;
   --accent-green: #9dbbae;
+  --light-grey: #dededb;
 }
 
 .App-welcome {
   color: var(--dark-text);
   display: grid;
   grid-template-rows: auto auto;
+  background-color: var(--bg);
 }
 
 .welcome_upper {
@@ -146,20 +153,23 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .welcome_scroll-down {
+  background-color: var(--light-grey);
   position: absolute;
-  height: 3rem;
-  width: 3rem;
-  left: calc(50% - 1.5rem);
-  top: calc(50% - 1.5rem);
+  height: 4rem;
+  width: 4rem;
+  left: calc(50% - 2rem);
+  top: calc(50% - 2rem);
   border: 0;
   padding: 1rem;
   border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .welcome_scroll-down::after {
   content: "\00a0";
@@ -170,10 +180,11 @@ table {
   border-color: black;
   border-style: solid;
   transform: rotate(-45deg);
-  animation: 0.7s ease-in infinite alternate floating;
+  animation: 0.7s ease-in infinite alternate floating-d;
+  transition: all 0.7s ease;
 }
 
-@keyframes floating {
+@keyframes floating-d {
   from {
     transform: rotate(-45deg) translateY(1px) translateX(-1px);
   }
@@ -192,18 +203,139 @@ table {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  position: relative;
+}
+
+.welcome_lower_first::after {
+  position: absolute;
+  content: "";
+  width: 40%;
+  border-bottom: 2px solid var(--light-grey);
+  bottom: 0;
 }
 
 .block {
   background-color: var(--accent-blue);
+  position: relative;
   width: 80%;
-  height: 30%;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .welcome_lower_second {
-  background-color: aqua;
+  background-color: var(--bg);
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.welcome_home-link {
+  background-color: var(--light-grey);
+  height: 2rem;
+  width: 2rem;
+  border: 0;
+  padding: 1rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.welcome_home-link::after {
+  content: "\00a0";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-width: 0 0 4px 4px;
+  border-color: black;
+  border-style: solid;
+  transform: rotate(225deg);
+  animation: 0.7s ease-in infinite alternate floating-r;
+}
+
+@keyframes floating-r {
+  from {
+    transform: rotate(225deg) translateY(1px) translateX(-1px);
+  }
+  to {
+    transform: rotate(225deg) translateY(-1px) translateX(1px);
+  }
+}
+
+.App-layout {
+  display: grid;
+  grid-template-rows: 10vh auto;
+}
+
+.layout_header {
+  background-color: var(--accent-green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.layout_header a {
+  padding: 0 10vw;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.layout_header_menu-wrapper {
+  position: relative;
+}
+
+.layout_header_menu {
+  position: relative;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  padding: 0 10vw;
+}
+.layout_header_menu_stripes {
+  position: absolute;
+  height: 2rem;
+  content: "";
+  position: relative;
+  border-right: 5px solid var(--dark-text);
+  transform: rotate(90deg);
+}
+.layout_header_menu_stripes::after {
+  position: absolute;
+  height: 2rem;
+  content: "";
+  border-right: 5px solid var(--dark-text);
+  left: 10px;
+}
+.layout_header_menu_stripes::before {
+  position: absolute;
+  height: 2rem;
+  content: "";
+  border-right: 5px solid var(--dark-text);
+  right: 5px;
+}
+
+.home {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.home_tags-bar-wrapper {
+  margin: 5vh 10vw;
+  overflow: scroll;
+}
+
+.home .tags-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.home .tags-bar a {
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-blue);
+  border-radius: 1rem;
 }

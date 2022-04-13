@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function WelcomePrompt({ logo }) {
@@ -28,8 +27,10 @@ function WelcomeIntroFirst() {
 function WelcomeIntroSecond() {
   return (
     <div className="welcome_lower_second">
-      <p>second part</p>
-      <Link to="/home">&gt;</Link>
+      <Block block={"third"} />
+      <Block block={"forth"} />
+      <Block block={"fifth"} />
+      <Link className="welcome_home-link" to="/home"></Link>
     </div>
   );
 }

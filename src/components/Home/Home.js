@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 import TagsBar from "../Tags/TagsBar";
 
-function Main({ logo }) {
+function Main() {
   return (
     <main className="home">
-      <h1>Home</h1>
-      <section>
+      <section className="home_tags-bar-wrapper">
         <TagsBar />
       </section>
       <section>
