@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function WelcomePrompt({ logo }) {
   return (
@@ -16,13 +17,10 @@ function WelcomeIntroFirst() {
   );
 }
 function WelcomeIntroSecond() {
-  function toHome() {
-    console.log("to home");
-  }
   return (
     <div>
       <p>second part</p>
-      <button onClick={toHome}>&gt;</button>
+      <Link to="/home">&gt;</Link>
     </div>
   );
 }
