@@ -126,10 +126,84 @@ table {
   border-spacing: 0;
 }
 
+:root {
+  --bg: #f2efe5;
+  --dark-text: #141712;
+  --light-text: #d5d6aa;
+  --accent-blue: #769fb6;
+  --accent-green: #9dbbae;
+}
+
 .App-welcome {
+  color: var(--dark-text);
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.welcome_upper {
+  height: 50vh;
+  background-color: var(--accent-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome_scroll-down {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  left: calc(50% - 1.5rem);
+  top: calc(50% - 1.5rem);
+  border: 0;
+  padding: 1rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.welcome_scroll-down::after {
+  content: "\00a0";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-width: 0 0 4px 4px;
+  border-color: black;
+  border-style: solid;
+  transform: rotate(-45deg);
+  animation: 0.7s ease-in infinite alternate floating;
+}
+
+@keyframes floating {
+  from {
+    transform: rotate(-45deg) translateY(1px) translateX(-1px);
+  }
+  to {
+    transform: rotate(-45deg) translateY(-1px) translateX(1px);
+  }
+}
+
+.welcome_lower {
   display: flex;
   flex-direction: column;
+}
+.welcome_lower_first {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: space-between;
+}
+
+.block {
+  background-color: var(--accent-blue);
+  width: 80%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome_lower_second {
+  background-color: aqua;
   height: 100vh;
 }
