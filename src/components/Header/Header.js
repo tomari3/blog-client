@@ -32,7 +32,7 @@ const HamburgerMenu = () => {
 function Header() {
   return (
     <header className="layout_header">
-      <Link to={"/home"}>start</Link>
+      <Link to={"/"}>start</Link>
       <HamburgerMenu />
       {/* <Link to="/home">Home</Link> */}
     </header>

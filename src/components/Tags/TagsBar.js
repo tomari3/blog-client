@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Tags() {
+export const Tag = ({ tag }) => {
   return (
     <div className="tags-bar">
-      <Link to="/tags/1">Tag</Link>
-      <Link to="/tags/2">Tag</Link>
-      <Link to="/tags/3">Tag</Link>
-      <Link to="/tags/4">Tag</Link>
+      <Link to="/tags/1">{tag}</Link>
     </div>
   );
-}
+};
 
-export default Tags;
+export const TagsBar = ({ tags }) => {
+  return tags.map((i, tag) => {
+    return <Tag key={i} tag={tag} />;
+  });
+};

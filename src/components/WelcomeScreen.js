@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React, { useRef } from "react";
 
 function WelcomePrompt({ logo }) {
   return (

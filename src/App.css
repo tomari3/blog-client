@@ -131,6 +131,10 @@ a {
   color: inherit;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg: #f2efe5;
   --dark-text: #141712;
@@ -359,10 +363,11 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .post:last-child {
-  margin-bottom: clamp(20px, 5vh, 10vh);
+  margin-bottom: 15vh;
 }
 
 .post_author-detail {
