@@ -1,21 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const LoginForm = ({ tag }) => {
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:3000/users/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: name,
+          password: password,
+        }),
+      });
+
+      const resJson = await res.json();
+      if (res.status === 200) {
+        setName("");
+        setPassword("");
+        console.log(resJson);
+      } else {
+        console.log(resJson);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="form-wrapper">
-      <form
-        action="http://localhost:3000/users/signup"
-        method="post"
-        className="form"
-      >
+      <form onSubmit={handleSubmit} className="form">
         <div className="form-field">
           <label htmlFor="name-email">name or email</label>
-          <input type="text" name="name-email" id="name-email" />
+          <input
+            type="text"
+            name="name-email"
+            id="name-email"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
         <div className="form-field">
           <label htmlFor="password">password</label>
-          <input type="password" name="password" id="password" />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
 
         <button type="submit" className="form-submit">
