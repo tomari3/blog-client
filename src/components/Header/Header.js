@@ -15,6 +15,10 @@ const SideMenu = ({ active, func }) => {
       </div>
       <div className="layout_header_open_item">
         <Link to={"/settings"}>settings</Link>
+        <div className="layout_header_open_sub">
+          <Link to={"/settings/signup"}>signup</Link>
+          <Link to={"/settings/login"}>login</Link>
+        </div>
       </div>
     </aside>
   );

@@ -45,18 +45,15 @@ function WelcomeIntro() {
   );
 }
 
-function NextButton() {
-  function scrollDown() {
-    console.log("scroll down");
-  }
-  return <button className="welcome_scroll-down" onClick={scrollDown}></button>;
+function NextButton({ func }) {
+  return <button className="welcome_scroll-down" onClick={func}></button>;
 }
 
 function WelcomeScreen() {
   return (
     <main className="App-welcome">
       <WelcomePrompt logo={"START"} />
-      <NextButton />
+      <NextButton func={() => console.log("ok")} />
       <WelcomeIntro />
     </main>
   );

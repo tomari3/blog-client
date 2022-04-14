@@ -10,6 +10,9 @@ import SpecificPost from "./components/Post/SpecificPost";
 import AllPosts from "./components/Post/AllPosts";
 import AllTags from "./components/Tags/AllTags";
 import SpecificTag from "./components/Tags/SpecificTag";
+import { LoginPage } from "./components/settings/Login";
+import { SignPage } from "./components/settings/Signup";
+import { SettingsPage } from "./components/settings/Settings";
 
 function App() {
   return (
@@ -20,6 +23,11 @@ function App() {
 
           <Route path="/home" element={<Layout />}>
             <Route index element={<Home />} />
+          </Route>
+          <Route path="/settings" element={<Layout />}>
+            <Route index element={<SettingsPage />} />
+            <Route path="signup" element={<SignPage />} />
+            <Route path="login" element={<LoginPage />} />
           </Route>
           <Route path="/posts" element={<Layout />}>
             <Route index element={<AllPosts />} />
