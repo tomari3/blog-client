@@ -60,8 +60,8 @@ function Post({ post }) {
 }
 
 export const PostGallery = ({ posts }) => {
-  return posts.map((post, i) => {
-    return <Post key={i} post={post} />;
+  return posts.map((post) => {
+    return <Post key={post.id} post={post} />;
   });
 };
 

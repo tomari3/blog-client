@@ -10,7 +10,7 @@ export const Tag = ({ tag }) => {
 };
 
 export const TagsBar = ({ tags }) => {
-  return tags.map((i, tag) => {
-    return <Tag key={i} tag={tag} />;
+  return tags.map((tag) => {
+    return <Tag key={tag.id} tag={tag} />;
   });
 };

@@ -22,7 +22,11 @@ const HamburgerMenu = () => {
         <div
           onClick={() => setOpen(!open)}
           className="layout_header_menu_stripes"
-        ></div>
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </aside>
       {open ? <SideMenu /> : null}
     </section>
@@ -34,7 +38,6 @@ function Header() {
     <header className="layout_header">
       <Link to={"/"}>start</Link>
       <HamburgerMenu />
-      {/* <Link to="/home">Home</Link> */}
     </header>
   );
 }
