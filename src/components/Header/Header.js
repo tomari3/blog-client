@@ -1,43 +1,45 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SideMenu = () => {
+const SideMenu = ({ active, func }) => {
   return (
-    <aside className="layout_header_open-menu">
-      <div>
-        <Link to={"/"}>1</Link>
-        <Link to={"/"}>2</Link>
-        <Link to={"/"}>3</Link>
+    <aside
+      onClick={func}
+      className={`layout_header_open ${active ? "active" : ""}`}
+    >
+      <div className="layout_header_open_item">
+        <Link to={"/home"}>home</Link>
+      </div>
+      <div className="layout_header_open_item">
+        <Link to={"/posts"}>posts</Link>
+      </div>
+      <div className="layout_header_open_item">
+        <Link to={"/settings"}>settings</Link>
       </div>
     </aside>
   );
 };
 
-const HamburgerMenu = () => {
-  const [open, setOpen] = useState(false);
-
+const HamburgerMenu = ({ func }) => {
   return (
-    <section className="layout_header_menu-wrapper">
+    <section className="layout_header_menu-wrapper" onClick={func}>
       <aside className="layout_header_menu">
-        <div
-          onClick={() => setOpen(!open)}
-          className="layout_header_menu_stripes"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <span></span>
+        <span></span>
+        <span></span>
       </aside>
-      {open ? <SideMenu /> : null}
     </section>
   );
 };
 
 function Header() {
+  const [active, setActive] = useState(false);
+
   return (
     <header className="layout_header">
       <Link to={"/"}>start</Link>
-      <HamburgerMenu />
+      <HamburgerMenu func={() => setActive(!active)} />
+      <SideMenu func={() => setActive(!active)} active={active} />
     </header>
   );
 }
