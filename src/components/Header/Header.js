@@ -38,7 +38,7 @@ const SideMenu = ({ active, func }) => {
       <div className="layout_header_open_item">
         <Link to={"/home"}>home</Link>
       </div>
-      <ToggleItem item={"posts"} items={["search", "liked", "saved"]} />
+      <ToggleItem item={"posts"} items={["new", "search", "liked", "saved"]} />
       <ToggleItem item={"settings"} items={["signup", "login"]} />
     </aside>
   );

@@ -13,6 +13,7 @@ import SpecificTag from "./components/Tags/SpecificTag";
 import { LoginPage } from "./components/settings/Login";
 import { SignPage } from "./components/settings/Signup";
 import { SettingsPage } from "./components/settings/Settings";
+import { PostFormPage } from "./components/Post/Post";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           </Route>
           <Route path="/posts" element={<Layout />}>
             <Route index element={<AllPosts />} />
+            <Route path="/posts/new" element={<PostFormPage />} />
             <Route path="/posts/:id" element={<SpecificPost />} />
           </Route>
           <Route path="/tags" element={<Layout />}>
