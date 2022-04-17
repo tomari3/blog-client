@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { DateTime } from "luxon";
 
 import { TagsBar } from "../Tags/TagsBar";
 import { SocialIconRow, InteractionsRow } from "./Social";
@@ -13,20 +14,22 @@ const AuthorPicture = () => {
   );
 };
 
-const AuthorHeaders = () => {
+const AuthorHeaders = ({ name, date }) => {
+  const dateFormat = DateTime.fromISO(date).toRelative(Date.now);
+
   return (
     <div className="post_author-detail_header">
-      <h1>Name</h1>
-      <p>Date</p>
+      <h1>{name}</h1>
+      <p>{dateFormat}</p>
     </div>
   );
 };
 
-const AuthorDetails = () => {
+const AuthorDetails = ({ author, date }) => {
   return (
     <div className="post_author-detail">
       <AuthorPicture />
-      <AuthorHeaders />
+      <AuthorHeaders name={author.username} date={date} />
     </div>
   );
 };
@@ -47,22 +50,22 @@ const PostContent = ({ content }) => {
   );
 };
 
-function Post({ post }) {
+function Post({ post, authData }) {
   return (
     <article className="post">
-      <AuthorDetails />
+      <AuthorDetails author={post.author} date={post.date} />
       <PostTitle title={post.header} />
       <section className="post_bar-wrapper">
         <TagsBar tags={post.tags} />
       </section>
       <PostContent content={post.content} />
       <SocialIconRow iconsArr={["", "", ""]} />
-      <InteractionsRow post={post} />
+      <InteractionsRow post={post} authData={authData} />
     </article>
   );
 }
 
-export const PostForm = ({ tag }) => {
+export const PostForm = ({ tag, authData }) => {
   const [header, setHeader] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
@@ -80,6 +83,7 @@ export const PostForm = ({ tag }) => {
           header: header,
           content: content,
           tags: tags,
+          id: authData.user.id,
         }),
       });
 
@@ -137,13 +141,13 @@ export const PostForm = ({ tag }) => {
   );
 };
 
-export const PostFormPage = ({ tags }) => {
+export const PostFormPage = ({ tags, authData }) => {
   return (
     <main className="sign-page">
       <div className="sign-page_header">
         <h1>create your account and start saving, liking and commenting!</h1>
       </div>
-      <PostForm />
+      <PostForm authData={authData} />
       <span className="suggest-login">
         have an account?{" "}
         <Link className="underline" to="/settings/login">
@@ -154,9 +158,9 @@ export const PostFormPage = ({ tags }) => {
   );
 };
 
-export const PostGallery = ({ posts }) => {
+export const PostGallery = ({ posts, authData }) => {
   return posts.map((post) => {
-    return <Post key={post._id} post={post} />;
+    return <Post key={post._id} post={post} authData={authData} />;
   });
 };
 

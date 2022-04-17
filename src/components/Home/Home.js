@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { TagsBar } from "../Tags/TagsBar";
 import { PostGallery } from "../Post/Post";
 
-function Main() {
+function Main({ authData }) {
   const [tags, setTags] = useState([]);
   const [posts, setPosts] = useState([]);
 
@@ -31,7 +31,7 @@ function Main() {
         <TagsBar tags={tags} />
       </section>
       <section className="home_posts">
-        <PostGallery posts={posts} />
+        <PostGallery posts={posts} authData={authData} />
       </section>
     </main>
   );

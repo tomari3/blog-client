@@ -111,7 +111,7 @@ export const CommentSection = ({ post }) => {
   );
 };
 
-export const Like = ({ post }) => {
+export const Like = ({ post, authData }) => {
   const [likes, setLikes] = useState(post.likes);
 
   const likePost = async (e) => {
@@ -124,7 +124,8 @@ export const Like = ({ post }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: post._id,
+          postID: post._id,
+          userID: authData.user.id,
         }),
       });
 
@@ -142,16 +143,16 @@ export const Like = ({ post }) => {
   return (
     <div className="interactions-row_btn" onClick={likePost}>
       <p>
-        <span>{likes}</span> likes
+        <span>{likes.length}</span> likes
       </p>
     </div>
   );
 };
 
-export const Save = ({ post }) => {
+export const Save = ({ post, authData }) => {
   const [saves, setSaves] = useState(post.saves);
 
-  const savePost = async (e) => {
+  const likePost = async (e) => {
     e.preventDefault();
     try {
       const res = await fetch(`http://localhost:3000/post/${post._id}/save`, {
@@ -161,7 +162,8 @@ export const Save = ({ post }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: post._id,
+          postID: post._id,
+          userID: authData.user.id,
         }),
       });
 
@@ -177,19 +179,19 @@ export const Save = ({ post }) => {
     }
   };
   return (
-    <div className="interactions-row_btn" onClick={savePost}>
+    <div className="interactions-row_btn" onClick={likePost}>
       <p>
-        <span>{saves}</span> saves
+        <span>{saves.length}</span> saves
       </p>
     </div>
   );
 };
 
-export const InteractionsRow = ({ post }) => {
+export const InteractionsRow = ({ post, authData }) => {
   return (
     <div className="interactions-row">
-      <Like post={post} />
-      <Save post={post} />
+      <Like post={post} authData={authData} />
+      <Save post={post} authData={authData} />
       <CommentSection post={post} />
     </div>
   );

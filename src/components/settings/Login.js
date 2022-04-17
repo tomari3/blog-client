@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const LoginForm = ({ tag }) => {
+export const LoginForm = ({ tag, set }) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
@@ -24,6 +24,7 @@ export const LoginForm = ({ tag }) => {
       if (res.status === 200) {
         setName("");
         setPassword("");
+        set(resJson);
         console.log(resJson);
       } else {
         console.log(resJson);
@@ -65,13 +66,13 @@ export const LoginForm = ({ tag }) => {
   );
 };
 
-export const LoginPage = ({ tags }) => {
+export const LoginPage = ({ tags, set }) => {
   return (
     <main className="login-page">
       <div className="login-page_header">
         <h1>glad to see you here</h1>
       </div>
-      <LoginForm />
+      <LoginForm set={set} />
       <span className="suggest-login">
         dont have an account?{" "}
         <Link className="underline" to="/settings/signup">
