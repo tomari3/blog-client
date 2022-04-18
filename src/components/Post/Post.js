@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
 
@@ -142,12 +142,22 @@ export const PostForm = ({ tag, authData }) => {
 };
 
 export const PostFormPage = ({ tags, authData }) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data.tags);
+      });
+  }, []);
+
   return (
     <main className="sign-page">
       <div className="sign-page_header">
         <h1>create your account and start saving, liking and commenting!</h1>
       </div>
-      <PostForm authData={authData} />
+      <PostForm authData={authData} data={data} />
       <span className="suggest-login">
         have an account?{" "}
         <Link className="underline" to="/settings/login">

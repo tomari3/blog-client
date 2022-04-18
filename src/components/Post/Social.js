@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { DateTime } from "luxon";
@@ -113,8 +113,15 @@ export const CommentSection = ({ post }) => {
 
 export const Like = ({ post, authData }) => {
   const [likes, setLikes] = useState(post.likes);
+  const [visible, setVisible] = useState(false);
 
   const likePost = async (e) => {
+    if (!authData) {
+      setVisible(true);
+      setTimeout(() => setVisible(false), 2000);
+      return;
+    }
+
     e.preventDefault();
     try {
       const res = await fetch(`http://localhost:3000/post/${post._id}/like`, {
@@ -134,25 +141,35 @@ export const Like = ({ post, authData }) => {
         setLikes(resJson);
         console.log(resJson);
       } else {
-        console.log(resJson);
+        console.log("unauthorized");
       }
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <div className="interactions-row_btn" onClick={likePost}>
       <p>
         <span>{likes.length}</span> likes
       </p>
+      {visible ? (
+        <ErrorPrompt place="like" msg="you are not logged in" />
+      ) : null}
     </div>
   );
 };
 
 export const Save = ({ post, authData }) => {
   const [saves, setSaves] = useState(post.saves);
+  const [visible, setVisible] = useState(false);
 
-  const likePost = async (e) => {
+  const savePost = async (e) => {
+    if (!authData) {
+      setVisible(true);
+      setTimeout(() => setVisible(false), 2000);
+      return;
+    }
     e.preventDefault();
     try {
       const res = await fetch(`http://localhost:3000/post/${post._id}/save`, {
@@ -163,26 +180,38 @@ export const Save = ({ post, authData }) => {
         },
         body: JSON.stringify({
           postID: post._id,
-          userID: authData.user.id,
+          userID: authData.user.id || "",
         }),
       });
 
       const resJson = await res.json();
       if (res.status === 200) {
         setSaves(resJson);
-        console.log(resJson);
       } else {
-        console.log(resJson);
+        console.log("unauthorized");
       }
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    <div className="interactions-row_btn" onClick={likePost}>
+    <div className="interactions-row_btn" onClick={savePost}>
       <p>
         <span>{saves.length}</span> saves
       </p>
+      {visible ? (
+        <ErrorPrompt place="save" msg="you are not logged in" />
+      ) : null}
+    </div>
+  );
+};
+
+const ErrorPrompt = ({ place, msg }) => {
+  return (
+    <div className={`line-error-prompt ${place}`}>
+      <span></span>
+      <p>{msg}</p>
+      <span></span>
     </div>
   );
 };

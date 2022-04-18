@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const LoginForm = ({ tag, set }) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ export const LoginForm = ({ tag, set }) => {
         setName("");
         setPassword("");
         set(resJson);
+        navigate("/home");
         console.log(resJson);
       } else {
         console.log(resJson);
