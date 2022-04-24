@@ -64,6 +64,15 @@ function Post({ post, authData }) {
     </article>
   );
 }
+function PostSquare({ post, authData }) {
+  return (
+    <article className="post square">
+      <AuthorDetails author={post.author} date={post.date} />
+      <PostTitle title={post.header} />
+      <InteractionsRow post={post} authData={authData} />
+    </article>
+  );
+}
 
 export const PostForm = ({ tag, authData }) => {
   const [header, setHeader] = useState("");
@@ -171,6 +180,12 @@ export const PostFormPage = ({ tags, authData }) => {
 export const PostGallery = ({ posts, authData }) => {
   return posts.map((post) => {
     return <Post key={post._id} post={post} authData={authData} />;
+  });
+};
+
+export const PostSquares = ({ posts, authData }) => {
+  return posts.map((post) => {
+    return <PostSquare key={post._id} post={post} authData={authData} />;
   });
 };
 

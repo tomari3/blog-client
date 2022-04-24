@@ -874,3 +874,54 @@ html {
   z-index: -1;
   border-bottom: 5px solid var(--accent-blue);
 }
+
+.tag_posts {
+  margin: clamp(5px, 5vw, 10vw) clamp(5px, 10vw, 15vw);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fill, 1fr);
+  justify-content: center;
+  border: 0;
+  gap: clamp(1ch, 10vmin, 15vmin);
+}
+
+.post.square {
+  width: auto;
+  /* aspect-ratio: 1; */
+  margin: 0;
+  min-height: auto;
+  border: 0;
+}
+
+.post.square * {
+  margin: 0;
+  padding: 0;
+}
+
+.post.square p {
+  font-size: 0.6rem;
+}
+
+.post.square .post_title {
+  width: 100%;
+  margin: 1rem 0 0 0;
+}
+
+.post.square .interactions-row p {
+  font-size: 0.5rem;
+}
+
+.post.square .interactions-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  display: none;
+}
+
+.post.square:hover > .interactions-row {
+  display: flex;
+}
+
+.post.square .comments_form-wrapper input {
+  width: 100%;
+}

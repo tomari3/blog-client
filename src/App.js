@@ -44,9 +44,9 @@ function App() {
             />
             <Route path="/posts/:id" element={<SpecificPost />} />
           </Route>
-          <Route path="/tags" element={<Layout />}>
+          <Route path="/tag" element={<Layout />}>
             <Route index element={<AllTags />} />
-            <Route path="/tags/:id" element={<SpecificTag />} />
+            <Route path="/tag/:id" element={<SpecificTag />} />
           </Route>
         </Routes>
       </Router>
