@@ -19,7 +19,7 @@ npm install
 
 - Website: https://www.linkedin.com/in/tom-ari-72034122a/
 - Github: [@tomari3](https://github.com/tomari3)
-- LinkedIn: [@Tom Ari](https://linkedin.com/in/tom-ari)
+- LinkedIn: [@Tom Ari](https://linkedin.com/in/tom-ari-72034122a)
 
 ## Show your support
 
