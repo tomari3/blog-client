@@ -5,7 +5,7 @@
 
 > 1.0.0
 
-### 🏠 [Homepage](This is a Front End project using React for visualizing a Social Blog website with a different levels of users (guest, member, admin) with different capabilities, e.g liking, saving, commnenting tagging, filtering by tag and more. It has a main page, specific post page, login/signup page with prompts relevant to the user status, managed by the backend. )
+### 🏠 [Homepage] (react front end for fullstack blog web-app)
 
 ## Install
 
@@ -17,13 +17,14 @@ npm install
 
 👤 **Tom Ari**
 
-* Website: https://www.linkedin.com/in/tom-ari-72034122a/
-* Github: [@tomari3](https://github.com/tomari3)
-* LinkedIn: [@Tom Ari](https://linkedin.com/in/Tom Ari)
+- Website: https://www.linkedin.com/in/tom-ari-72034122a/
+- Github: [@tomari3](https://github.com/tomari3)
+- LinkedIn: [@Tom Ari](https://linkedin.com/in/tom-ari)
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
